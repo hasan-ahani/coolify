@@ -9,7 +9,7 @@ set -o pipefail # Cause a pipeline to return the status of the last command that
 VERSION="1.3.3"
 DOCKER_VERSION="26.0"
 
-CDN="https://cdn.coollabs.io/coolify"
+CDN="https://raw.githubusercontent.com/hasan-ahani/coolify/main"
 OS_TYPE=$(grep -w "ID" /etc/os-release | cut -d "=" -f 2 | tr -d '"')
 
 # Check if the OS is manjaro, if so, change it to arch
@@ -282,7 +282,7 @@ echo "Downloading required files from CDN..."
 curl -fsSL $CDN/docker-compose.yml -o /data/coolify/source/docker-compose.yml
 curl -fsSL $CDN/docker-compose.prod.yml -o /data/coolify/source/docker-compose.prod.yml
 curl -fsSL $CDN/.env.production -o /data/coolify/source/.env.production
-curl -fsSL $CDN/upgrade.sh -o /data/coolify/source/upgrade.sh
+curl -fsSL $CDN/scripts/upgrade.sh -o /data/coolify/source/upgrade.sh
 
 # Copy .env.example if .env does not exist
 if [ ! -f /data/coolify/source/.env ]; then
